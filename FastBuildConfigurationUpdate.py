@@ -26,6 +26,7 @@ buildConfigTagName = GetTag("BuildConfiguration")
 fastBuildTagName = GetTag("FASTBuild")
 enableDistributionTagName = GetTag("bEnableDistribution")
 enableCacheTagName = GetTag("bEnableCaching")
+cacheModeTagName = GetTag("CacheMode")
 
 # namespace가 태그마다 표시되는 것을 방지, 전역으로 등록(using namespace std; 랑 비슷한듯, 하지만 보이는 것만 변경되고 탐색시는 여전히 namespace를 포함한 태그네임으로 해야함)
 ET.register_namespace('', registerNamespace)
@@ -83,6 +84,12 @@ if fastBuildTag is not None:
     enableCacheTag.text = str('true')
     print("Set enableCacheTag to true")
 
+    cacheModeTag = fastBuildTag.find(cacheModeTagName)
+    if cacheModeTag is None:
+        ET.SubElement(fastBuildTag, cacheModeTagName)
+    cacheModeTag.text = str('ReadWrite')
+    print("Set cacheMode to ReadWrite")
+
     enableDistributionTag = fastBuildTag.find(enableDistributionTagName)
     if enableDistributionTag is None:
         ET.SubElement(fastBuildTag, enableDistributionTagName)
@@ -95,8 +102,10 @@ else:
     fastBuildTag = ET.SubElement(xmlRoot, fastBuildTagName)
     ET.SubElement(fastBuildTag, enableCacheTagName).text = str('true')
     ET.SubElement(fastBuildTag, enableDistributionTagName).text = str('true')
+    ET.SubElement(fastBuildTag, cacheModeTagName).text = str('ReadWrite')
     print("Set enableCacheTag to true")
     print("Set enableDistributionTag to true")   
+    print("Set cacheMode to ReadWrite")
 
 # 세팅한 사항들을 다시 파일에 쓰기
 xmlTree.write(buildConfigurationPath)
