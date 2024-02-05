@@ -80,19 +80,19 @@ if fastBuildTag is not None:
     # enableCacheTag, enableDistributionTag를 탐색 및 없을시 생성과 값true 세팅
     enableCacheTag = fastBuildTag.find(enableCacheTagName)
     if enableCacheTag is None:
-        ET.SubElement(fastBuildTag, enableCacheTagName)
+        enableCacheTag = ET.SubElement(fastBuildTag, enableCacheTagName)
     enableCacheTag.text = str('true')
     print("Set enableCacheTag to true")
 
     cacheModeTag = fastBuildTag.find(cacheModeTagName)
     if cacheModeTag is None:
-        ET.SubElement(fastBuildTag, cacheModeTagName)
+        cacheModeTag = ET.SubElement(fastBuildTag, cacheModeTagName)
     cacheModeTag.text = str('ReadWrite')
     print("Set cacheMode to ReadWrite")
 
     enableDistributionTag = fastBuildTag.find(enableDistributionTagName)
     if enableDistributionTag is None:
-        ET.SubElement(fastBuildTag, enableDistributionTagName)
+        enableDistributionTag = ET.SubElement(fastBuildTag, enableDistributionTagName)
     enableDistributionTag.text = str('true')       
     print("Set enableDistributionTag to true")   
 else:
