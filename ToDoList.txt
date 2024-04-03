@@ -1,0 +1,6 @@
+04/03
+TODO: 
+1. 바탕화면에 FBuildWorker.exe 바로가기 추가
+2. (Worker만)시작 프로그램에 FBuildWorker.exe 추가 + FBuildWorker 실행
+3. (선택사항)유저명이 newmatic일시 임의의 newmatic + {x} 로 유저명 생성해서(유일한) 생성후
+현재 유저에서 로그오프 + 생성한 유저로 로그인후 다시 GOTO 세팅시작. [Boss 컴퓨터에 연결된 WorkerPC중 유저명이 겹치면 공유폴더로 접근불가]
